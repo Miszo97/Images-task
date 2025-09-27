@@ -3,7 +3,7 @@
 
 ### Upload an image to the server.
 ```shell
-curl -X POST -F "file=@test_files/1.png" -F "title=This is water png 100 100" -F "width=100" -F "height=100" http://localhost:8000/images/
+curl -X POST -F "file=@test_files/2.jpg" -F "title=I love this picture real 250 250 " -F "width=250" -F "height=250" http://localhost:8000/images/
 ```
 
 ### Get all images

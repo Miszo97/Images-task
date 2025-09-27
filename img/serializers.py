@@ -7,9 +7,12 @@ from img.utils import resize_image
 
 
 class ImageSerializer(serializers.ModelSerializer):
+    url = serializers.FileField(source="file", read_only=True)
+    file = serializers.FileField(write_only=True)
+
     class Meta:
         model = Image
-        fields = ["id", "file", "title", "width", "height"]
+        fields = ["id", "url", "file", "title", "width", "height"]
 
     def validate_file(self, file):
         stream = getattr(file, "file", file)
