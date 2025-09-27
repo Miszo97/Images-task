@@ -18,7 +18,7 @@ class ImageSerializer(serializers.ModelSerializer):
         stream = getattr(file, "file", file)
         try:
             img = PILImage.open(stream)
-            img.verify()  # Verify the image without decoding the entire file
+            img.verify()
         except (UnidentifiedImageError, OSError, ValueError):
             raise serializers.ValidationError("Uploaded file is not a valid image.")
         finally:

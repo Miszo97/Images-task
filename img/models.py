@@ -5,8 +5,6 @@ from django.core.validators import FileExtensionValidator
 from django.db import models
 from storages.backends.s3boto3 import S3Boto3Storage
 
-# Create your models here.
-
 
 def get_image_s3_file_path(instance, filename: str):
     return f"{uuid4().hex}.{filename.split('.')[-1]}"
