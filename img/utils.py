@@ -12,7 +12,12 @@ def resize_image(
     resizer: ImageResizer = get_image_resizer()
     initial_width, initial_height = resizer.get_image_dimensions(image_file=image_file)
 
-    if initial_width == width and initial_height == height or width is None and height is None:
+    if (
+        initial_width == width
+        and initial_height == height
+        or width is None
+        and height is None
+    ):
         return initial_width, initial_height
 
     binary_io = image_file.file if hasattr(image_file, "file") else image_file

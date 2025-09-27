@@ -7,21 +7,45 @@ import img.models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Image',
+            name="Image",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
-                ('width', models.IntegerField(blank=True, null=True)),
-                ('height', models.IntegerField(blank=True, null=True)),
-                ('file', models.FileField(storage=img.models.ImageFileS3Storage, upload_to=img.models.get_image_s3_file_path, validators=[django.core.validators.FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp'])])),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                ("width", models.IntegerField(blank=True, null=True)),
+                ("height", models.IntegerField(blank=True, null=True)),
+                (
+                    "file",
+                    models.FileField(
+                        storage=img.models.ImageFileS3Storage,
+                        upload_to=img.models.get_image_s3_file_path,
+                        validators=[
+                            django.core.validators.FileExtensionValidator(
+                                allowed_extensions=[
+                                    "jpg",
+                                    "jpeg",
+                                    "png",
+                                    "gif",
+                                    "webp",
+                                    "bmp",
+                                ]
+                            )
+                        ],
+                    ),
+                ),
             ],
         ),
     ]
