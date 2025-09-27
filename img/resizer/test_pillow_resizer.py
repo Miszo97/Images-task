@@ -2,6 +2,7 @@ import os
 from io import BytesIO
 
 import pytest
+from django.conf import settings
 from PIL import Image as PILImage
 
 from img.resizer.pillow_resizer import PillowImageResizer
@@ -9,8 +10,7 @@ from img.resizer.pillow_resizer import PillowImageResizer
 
 @pytest.fixture(scope="module")
 def image_paths():
-    project_root = os.path.dirname(os.path.dirname(__file__))
-    tf = os.path.join(project_root, "test_files")
+    tf = os.path.join(settings.PROJECT_DIR, "test_files")
     return [
         os.path.join(tf, "1.jpg"),
         os.path.join(tf, "1.png"),

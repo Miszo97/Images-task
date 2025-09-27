@@ -3,6 +3,8 @@ from io import BytesIO
 from unittest.mock import patch
 
 import pytest
+from django.conf import settings
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.exceptions import ErrorDetail
@@ -23,10 +25,7 @@ class MockImageResizer(ImageResizer):
 
 @pytest.fixture
 def create_temp_image_file():
-    from django.core.files.uploadedfile import SimpleUploadedFile
-
-    project_root = os.path.dirname(os.path.dirname(__file__))
-    file_path = os.path.join(project_root, "test_files", "1.jpg")
+    file_path = os.path.join(settings.PROJECT_DIR, "test_files", "1.jpg")
     with open(file_path, "rb") as f:
         content = f.read()
     return SimpleUploadedFile(name="1.jpg", content=content, content_type="image/jpeg")
@@ -68,7 +67,7 @@ class TestImagesViewSet:
             ),
         ],
     )
-    @patch("img.resizer.service.get_image_resizer")
+    @patch("img.utils.get_image_resizer")
     def test_image_upload_missing_parameters(
         self,
         mock_get_image_resizer,
