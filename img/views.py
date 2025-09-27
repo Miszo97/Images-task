@@ -10,5 +10,6 @@ class ImagesViewSet(viewsets.ModelViewSet):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
     parser_classes = [MultiPartParser, FormParser]
+    http_method_names = ['get', 'post', 'head', 'options']
     filter_backends = [DjangoFilterBackend]
     filterset_fields = {"title": ["icontains"]}

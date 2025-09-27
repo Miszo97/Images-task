@@ -1,5 +1,15 @@
 # Images
 
+### Set up envs and run
+
+```shell
+cp .env.example .env
+docker compose up -d
+```
+
+### Docs
+
+http://127.0.0.1:8000/api/docs/
 
 ### Upload an image to the server.
 ```shell
