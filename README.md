@@ -21,7 +21,7 @@ curl -X POST -F "file=@test_files/2.jpg" -F "title=I love this picture real 250 
 curl http://localhost:8000/images/
 ```
 
-#### Filter images by title
+### Filter images by title
 ```shell
 curl http://localhost:8000/images/?title__icontains=water
 ```
